@@ -4,6 +4,7 @@
   * {
     margin: 0;
     padding: 0;
+    margin-right: 0;
     user-select: none;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
@@ -268,16 +269,23 @@
     margin-top: 50px;
     text-align: center;
     color: #211952;
+    width: 100%;
     text-decoration: underline;
   }
-
+  @media (min-width: 100px) and (max-width: 598px) {
+    .aw_h1 {
+      font-size: 40px;
+      text-align: center;
+      padding-right: 80px;
+    }
+  }
   .opensettings_btn {
     background-color: #5e81f4 !important;
     color: #fff;
     height: 50px;
     border-radius: 8px;
-    font-weight: 600;
-    width: 300px;
+    font-weight: 500;
+    width: 250px;
     text-align: center;
     margin-left: 50px;
     margin-bottom: 40px
@@ -288,15 +296,15 @@
   }
 
   .vertical-menu {
-    width: 400px;
+    width: 100%;
     height: 400px;
     overflow-y: auto;
     margin-top: 20px;
     border-radius: 15px;
     border: 5px solid rgb(31, 17, 71);
-    margin-left: 50px;
     text-align: center;
     background-color: cyan;
+    margin-bottom: 0px;
   }
 
   .vertical-menu a {
@@ -479,21 +487,9 @@
     display: table;
     clear: both;
   }
-  .knowing {
-    background-color: #fc5185;
-    overflow: hidden;
-    background-image: url("/images/kn.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+
   /* Responsive columns */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 10px;
-    }
-  }
+
 
   /* Style the counter cards */
   .card {
@@ -524,13 +520,13 @@
   }
 
   .third_container {
-    margin-top: 50px;
+    margin-top: 0px;
   }
 
   .p_btn {
     background-color: #5e81f4 !important;
     color: #fff;
-    height: 50px;
+    height: 70px;
     border-radius: 8px;
     font-weight: 600;
     width: 300px;
@@ -550,7 +546,7 @@
   }
 .color
 {
-  background-color: #364f6b;
+  background-color: #336699;
 }
 
 .footer {
