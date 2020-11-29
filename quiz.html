@@ -9,558 +9,13 @@
   <link rel="stylesheet" href="./css/quiz.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="stylesheet" href="file:///E:/fontawesome/css/all.css">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
-<style>
-  @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
-
-  * {
-    margin: 0;
-    padding: 0;
-    user-select: none;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-
-  nav {
-    background: #364f6b;
-  }
-
-  nav:after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-  nav .logo {
-    float: left;
-    color: white;
-    font-size: 27px;
-    font-weight: 600;
-    line-height: 70px;
-    padding-left: 60px;
-  }
-
-  nav ul {
-    float: right;
-    margin-right: 40px;
-    list-style: none;
-    position: relative;
-  }
-
-  nav ul li {
-    display: inline-block;
-    background: #364f6b;
-    margin: 0 5px;
-  }
-
-  nav ul li:hover {
-    transform: scale(1.1);
-  }
-
-  nav ul li a {
-    color: white;
-    line-height: 70px;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 8px 15px;
-  }
-
-  nav ul li a:hover {
-    color: cyan;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #33ffff, 0 0 10px #66ffff;
-  }
-
-  nav ul ul li a:hover {
-    box-shadow: none;
-  }
-
-  nav ul ul {
-    position: absolute;
-    top: 90px;
-    border-top: 3px solid cyan;
-    opacity: 0;
-    visibility: hidden;
-    transition: top 0.3s;
-  }
-
-  nav ul ul ul {
-    border-top: none;
-  }
-
-  nav ul li:hover>ul {
-    top: 70px;
-    opacity: 1;
-    visibility: visible;
-  }
-
-  nav ul ul li {
-    position: relative;
-    margin: 0px;
-    width: 200px;
-    float: none;
-    display: list-item;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  }
-
-  nav ul ul li a {
-    line-height: 50px;
-  }
-
-  nav ul ul ul li {
-    position: relative;
-    top: -60px;
-    left: 150px;
-  }
-
-  .show,
-  .icon,
-  input {
-    display: none;
-  }
-
-  .fa-plus {
-    font-size: 15px;
-    margin-left: 40px;
-  }
-
-  form {
-    background-color: #3fc1c9;
-    width: 300px;
-    height: 44px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    float: right;
-    margin-right: 1.5rem;
-    margin-top: 0.9rem;
-  }
-
-  input {
-    all: unset;
-    font: 16px system-ui;
-    color: #fff;
-    height: 100%;
-    width: 100%;
-    padding: 6px 10px;
-  }
-
-  ::placeholder {
-    color: #fff;
-    opacity: 0.7;
-  }
-
-  button {
-    all: unset;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    color: white;
-  }
-
-  button:hover {
-    color: #fc5185;
-  }
-
-  @media all and (max-width: 968px) {
-    nav ul {
-      margin-right: 0px;
-      float: left;
-    }
-
-    nav .logo {
-      padding-left: 30px;
-      width: 100%;
-    }
-
-    .show+a,
-    ul {
-      display: none;
-    }
-
-    nav ul li,
-    nav ul ul li {
-      display: block;
-      width: 100%;
-    }
-
-    nav ul li a:hover {
-      box-shadow: none;
-    }
-
-    .show {
-      display: block;
-      color: white;
-      font-size: 18px;
-      padding: 0 20px;
-      line-height: 70px;
-      cursor: pointer;
-    }
-
-    .show:hover {
-      color: cyan;
-    }
-
-    .icon {
-      display: block;
-      color: white;
-      position: absolute;
-      top: 0;
-      right: 40px;
-      line-height: 70px;
-      cursor: pointer;
-      font-size: 25px;
-    }
-
-    nav ul ul {
-      top: 70px;
-      border-top: 0px;
-      float: none;
-      position: static;
-      display: none;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    nav ul ul a {
-      padding-left: 40px;
-    }
-
-    nav ul ul ul a {
-      padding-left: 80px;
-    }
-
-    nav ul ul ul li {
-      position: static;
-    }
-
-    [id^="btn"]:checked+ul {
-      display: block;
-    }
-
-    nav ul ul li {
-      border-bottom: 0px;
-    }
-
-    span.cancel:before {
-      content: "\f00d";
-    }
-  }
-
-  .content {
-    z-index: -1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  header {
-    font-size: 35px;
-    font-weight: 600;
-    padding: 10px 0;
-  }
-
-  p {
-    font-size: 30px;
-    font-weight: 500;
-  }
-
-  form {
-    margin-left: 1rem;
-  }
-
-  /*this is for the awareness container*/
-
-
-  .aw_h1 {
-    margin-left: 50px;
-    margin-top: 50px;
-    text-align: center;
-    color: #211952;
-    text-decoration: underline;
-  }
-
-  .opensettings_btn {
-    background-color: #5e81f4 !important;
-    color: #fff;
-    height: 50px;
-    border-radius: 8px;
-    font-weight: 600;
-    width: 300px;
-    text-align: center;
-    margin-left: 50px;
-    margin-bottom: 40px
-  }
-
-  .awareness_container {
-    background-color: #fc5185;
-  }
-
-  .vertical-menu {
-    width: 400px;
-    height: 400px;
-    overflow-y: auto;
-    margin-top: 20px;
-    border-radius: 15px;
-    border: 5px solid rgb(31, 17, 71);
-    margin-left: 50px;
-    text-align: center;
-    background-color: cyan;
-  }
-
-  .vertical-menu a {
-    background-color: white;
-    color: black;
-    display: block;
-    padding: 10px 5px;
-    text-align: center;
-    text-decoration: none;
-    background-color: cyan;
-  }
-
-  .vertical-menu a:hover {
-    background-color:rgb(173, 253, 240);
-  }
-
-  .vertical-menu a.active {
-    background-color: cyan;
-    color: black;
-    height: 60px;
-  }
-
-  .vertical-menu input[type=text] {
-    float: right;
-    padding: 6px;
-    margin-top: 8px;
-    border: none;
-    font-size: 17px;
-    width: 180px;
-    height: 40px;
-
-  }
-
-  /*this is for the slideshow in the right*/
-  /*--------------------------------------------------------*/
-
-
-
-  /* Slideshow container */
-  .slideshow-container {
-    max-width: 600px;
-    position: relative;
-    margin: auto;
-    margin-top: 50px;
-  }
-
-  /*this is for the text_container*/
-
-  .text_container {
-    margin-top: 30px;
-  }
-
-  .text_container img {
-    margin-right: 20px;
-  }
-
-  /* Hide the images by default */
-  .mySlides {
-    display: none;
-  }
-
-  /* Next & previous buttons */
-  .prev,
-  .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-  }
-
-  /* Position the "next button" to the right */
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-  /* Caption text */
-  .text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-  }
-
-  /* Number text (1/3 etc) */
-  .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-  }
-
-  /* The dots/bullets/indicators */
-  .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-
-  .active,
-  .dot:hover {
-    background-color: #717171;
-  }
-
-  /* Fading animation */
-  .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-  }
-
-  @-webkit-keyframes fade {
-    from {
-      opacity: .4
-    }
-
-    to {
-      opacity: 1
-    }
-  }
-
-  @keyframes fade {
-    from {
-      opacity: .4
-    }
-
-    to {
-      opacity: 1
-    }
-  }
-
-  /*this code is for the second container*/
-  /* Float four columns side by side */
-  .column {
-    float: left;
-    width: 25%;
-    padding: 0 3px;
-  }
-
-  .row {
-    margin: 0 -5px;
-  }
-
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  /* Responsive columns */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 10px;
-    }
-  }
-
-  /* Style the counter cards */
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 5px;
-    text-align: center;
-    background-color: #444;
-    color: white;
-  }
-
-  .fa {
-    font-size: 30px;
-  }
-
-  /*this is the code for the third container*/
-  .th_btn {
-    background-color: #5e81f4 !important;
-    color: #fff;
-    height: 50px;
-    border-radius: 8px;
-    font-weight: 600;
-    width: 300px;
-    text-align: center;
-    margin-left: 50px;
-    margin-bottom: 40px;
-    margin-top: 30px;
-
-  }
-
-  .third_container {
-    margin-top: 50px;
-  }
-
-  .p_btn {
-    background-color: #5e81f4 !important;
-    color: #fff;
-    height: 50px;
-    border-radius: 8px;
-    font-weight: 600;
-    width: 300px;
-    text-align: center;
-    margin-left: 50px;
-    margin-bottom: 40px;
-    margin-top: 30px;
-
-  }
-
-  /* -------------------------------------------------------- */
-  /* -------------------------------------------------------- */
-
-
-  img {
-    float: left;
-  }
-.color
-{
-  background-color: #364f6b;
-}
-
-
-
-
-  /* -------------------------------------------------------- */
-  /* -------------------------------------------------------- */
-</style>
 
 <body>
   <!--Navbar Start-->
@@ -738,6 +193,58 @@
       </div>
     </div>
   </div>
+  <!--MISSION-VISSION -->
+
+  <div class="mission" >
+      <div class="missionsub">
+        <section id="straight2" class="text-gray-700 body-font">
+            <div class="container px-5 py-24 mx-auto">
+              <div class="flex flex-wrap -mx-4 -mb-10 text-center">
+                <div class="sm:w-1/2 mb-10 px-4">
+                  <div class="rounded-lg h-64 overflow-hidden" style="box-shadow: 20px 8px 26px -6px black;">
+                    <img alt="content" class="object-cover object-center h-full w-full" src="./images/mis.jpg"  >
+                  </div>
+                  <h1 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3" style="color: #364f6b;"><strong>MISSION</strong></h1>
+                  <p class="leading-relaxed text-base">To make world a better place to live and work, spread love and happiness, and create multiple opportunities and to empower our youths because they are our country's future and will be leading our country.</p>
+
+                </div>
+                <div class="sm:w-1/2 mb-10 px-4">
+                  <div class="rounded-lg h-64 overflow-hidden" style="box-shadow: 20px 8px 26px -6px black;">
+                    <img alt="content" class="object-cover object-center h-full w-full" src="./images/vis.jpeg">
+                  </div>
+                  <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3" style="color: #364f6b;"><strong>VISION</strong></h2>
+                  <p class="leading-relaxed text-base">To create a platform for youth to discover their interest and inner talents. The organization guides, educate and maps youth traits and talent in a right way of career, and develop a sense of civic responsibilities.</p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+      </div>
+  </div>
+  <div class="knowing" id="knowingcollcom" style="background-image: url(./images/kn.jpg);background-repeat: no-repeat;background-size: cover;">
+      <div class="knowingsub">
+  <section  class="text-gray-700 body-font">
+      <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd58nI0xD4_NsNK2Ho6oK4xd3W_xhrjHdxoUUKp2Qj26WMlsA/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+          </div></p1>
+        </div>
+        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+          <p style="font-size: 20px;font-family: 'Open Sans', sans-serif; color:#f5f5f5; letter-spacing: 2px;"> The Cyber Trivia: This is 30 minutes innovative designed quiz, not to only make people attempt a quiz but at the
+            same time, but also make them LEARN and ENRICH their knowledge about popular cybercrime issues and preventive
+            measures. There is no limit on timing to complete the quiz, take your own time, read the instrucions carefully,
+            watch the video till the end and then aswerers the questions.</p><br>
+            <p style="color: #fc5185;font-size: 20px;font-family: 'Open Sans', sans-serif;  letter-spacing: 2px;"><b>Timing:- </b> </p><p style="font-size: 20px;font-family: 'Open Sans', sans-serif; color:#f5f5f5; letter-spacing: 2px;">30 min </p><br></br>
+
+            <p style="color: #fc5185;font-size: 20px;font-family: 'Open Sans', sans-serif;  letter-spacing: 2px;"><b>Rewards:- </b></p><br>
+            <p style="font-size: 20px;font-family: 'Open Sans', sans-serif; color:#f5f5f5; letter-spacing: 2px;"><br> 1.<br> 2. <br> 3. <br> 4.<br></p>
+            <button class="p_btn">total number of people Trained</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
 
   <!--this is for the second container-->
 
@@ -747,15 +254,15 @@
     <u>TRAINING QUIZ IN ENGLISH</u></h1>
   <br>
 <div class="row">
-  <div class="col-6">
+  <div class="col">
 
 <div class="img">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd58nI0xD4_NsNK2Ho6oK4xd3W_xhrjHdxoUUKp2Qj26WMlsA/viewform?embedded=true" width="700" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd58nI0xD4_NsNK2Ho6oK4xd3W_xhrjHdxoUUKp2Qj26WMlsA/viewform?embedded=true" width="700px" height="900px" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
 </div>
 <button class="th_btn">Participate</button>
 </div>
-<div class="col-6">
+<div class="col">
   <p style="font-size: 20px;font-family: 'Open Sans', sans-serif; color:#f5f5f5; letter-spacing: 2px;"> The Cyber Trivia: This is 30 minutes innovative designed quiz, not to only make people attempt a quiz but at the
     same time, but also make them LEARN and ENRICH their knowledge about popular cybercrime issues and preventive
     measures. There is no limit on timing to complete the quiz, take your own time, read the instrucions carefully,
@@ -765,6 +272,27 @@
     <p style="color: #fc5185;font-size: 20px;font-family: 'Open Sans', sans-serif;  letter-spacing: 2px;"><b>Rewards:- </b></p><br>
     <p style="font-size: 20px;font-family: 'Open Sans', sans-serif; color:#f5f5f5; letter-spacing: 2px;"><br> 1.<br> 2. <br> 3. <br> 4.<br></p>
     <button class="p_btn">total number of people Trained</button>
+
+            <div class="vertical-menu">
+              <a href="#" class="active">
+                <h2>List of Top Performers in Enrolling in the
+                  Training Program</h2>
+              </a><br>
+              <hr class="solid">
+              <a href="#">favico</a>
+              <a href="#">darlian</a>
+              <a href="#">ulipins</a>
+              <a href="#">yolverity</a>
+              <a href="#">favico</a>
+              <a href="#">darlian</a>
+              <a href="#">ulipins</a>
+              <a href="#">yolverity</a>
+              <a href="#">favico</a>
+              <a href="#">darlian</a>
+              <a href="#">ulipins</a>
+              <a href="#">yolverity</a>
+            </div>
+          </div>
   </div>
 </div>
 </div>
@@ -775,14 +303,14 @@
     <u>TRAINING QUIZ IN HINDI</u></h1>
   <br>
 <div class="row">
-  <div class="col-6">
+  <div class="col">
 
 <div class="img">
   <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdnCxe1ChfGAIlg88fg7HJbc3yfUjBkwRdZ8YcrhaMEnqChAA/viewform?embedded=true" width="700" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 </div>
 <button class="th_btn">Participate</button>
 </div>
-<div class="col-6">
+<div class="col">
   <p style="font-size: 20px;font-family: 'Open Sans', sans-serif; color:#f5f5f5; letter-spacing: 2px;"> The Cyber Trivia: This is 30 minutes innovative designed quiz, not to only make people attempt a quiz but at the
     same time, but also make them LEARN and ENRICH their knowledge about popular cybercrime issues and preventive
     measures. There is no limit on timing to complete the quiz, take your own time, read the instrucions carefully,
@@ -815,6 +343,115 @@
 </div>
 
 
+<div class="footer">
+  <div class="footersub">
+    <footer class="text-gray-700 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap md:text-left text-center order-first">
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"style="color: cyan;" >CATEGORIES</h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"style="color: cyan;" >CATEGORIES</h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"style="color: cyan;" >CATEGORIES</h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800"style="color: white;" >Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"style="color: cyan;" >SUBSCRIBE</h2>
+            <div class="flex xl:flex-no-wrap md:flex-no-wrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
+              <div class="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
+                <label for="footer-field" class="leading-7 text-sm text-gray-600"style="color: cyan;" ><strong>Email</strong></label>
+                <input type="text" id="footer-field" name="footer-field" class="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              </div>
+              <button type="button" class="btn btn-warning" style="margin-top: 1rem;width: 5rem; margin: 1rem auto;"><strong>Subscribe</strong></button>
+            </div>
+            <p class="text-gray-500 text-sm mt-2 md:text-left text-center"style="color: cyan;" >Submit Your Email
+              <br class="lg:block hidden">So that you never miss updates
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-200" style="background-color: black;">
+        <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+           <img src="images/companylogo.png" style="width: 140px;transform: skewX(0deg);">
+
+          </a>
+          <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2020 Collcom
+
+          </p>
+          <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a class="text-red-600">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-red-500">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-red-500">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-red-500">
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
 
 
 
