@@ -226,15 +226,16 @@ form {
   height: 900px;
 }
 .wrapper {
-  max-width: 500px;
-  width: 100%;
+
+  width:auto;
   margin: 35px auto;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
   background-color: #364f6b;
   padding: 30px;
   float: left;
-  margin-left: 5rem;
   padding-top: 1rem;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .wrapper .title {
@@ -384,7 +385,7 @@ form {
 .wrapper .form .inputfield:last-child {
   margin-bottom: 0;
 }
-@media (max-width: 420px) {
+@media (max-width: 100px) {
   .wrapper .form .inputfield {
     flex-direction: column;
     align-items: flex-start;

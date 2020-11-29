@@ -222,6 +222,21 @@ form {
 .wholemain {
   background-color: #fc5185;
 }
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    margin-left: 6rem;
+}
+
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
 .social {
   background-color: black;
 }
@@ -229,7 +244,13 @@ form {
 .footer {
   background-color: #364f6b;
 }
-
+.knowing {
+  background-color: #fc5185;
+  overflow: hidden;
+  background-image: url("/images/kn.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 #overhover:hover {
   background-color: #fc5185;
   transition-duration: 2s;

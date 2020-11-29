@@ -260,7 +260,7 @@ form {
   content: "";
   width: 50%;
   height: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   background: rgba(255, 255, 255, 0.2);
@@ -467,7 +467,10 @@ section button:hover {
   font-size: 20px;
   font-weight: 600;
 }
-@media (max-width: 753px) {
+@media  (min-width: 813px) and (max-width: 1060px) {
+  body{
+    margin-right: 0rem;
+  }
   .wrapper {
     max-width: 700px;
   }
@@ -476,16 +479,22 @@ section button:hover {
     margin-bottom: 20px;
   }
 }
-@media (max-width: 505px) {
+/*@media (max-width: 505px) {
+  body{
+    margin-right: 0rem;
+  }
   .wrapper {
     max-width: 500px;
   }
   .wrapper .card {
     width: 100%;
   }
-}
+}*/
 
 @media (min-width: 600px) and (max-width: 812px) {
+  body{
+    margin-right: 0rem;
+  }
   .box1 {
     width: 500px;
   }
@@ -497,7 +506,10 @@ section button:hover {
   }
 }
 
-@media (min-width: 375px) and (max-width: 598px) {
+@media (min-width: 100px) and (max-width: 598px) {
+  body{
+    margin-right: 0rem;
+  }
   .container .display-4 {
     font-size: 40px;
     margin-left: -4rem;
@@ -509,6 +521,12 @@ section button:hover {
   }
   .main2 {
     height: 2100px;
+  }
+  .wrapper {
+    max-width: 500px;
+  }
+  .wrapper .card {
+    width: 100%;
   }
 }
 .footer {
